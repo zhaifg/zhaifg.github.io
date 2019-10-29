@@ -1,77 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhaifg.github.io</id>
-    <title>Gridea</title>
-    <updated>2019-10-29T15:31:20.125Z</updated>
+    <title>我的笔记本</title>
+    <updated>2019-10-29T15:46:27.752Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhaifg.github.io"/>
     <link rel="self" href="https://zhaifg.github.io/atom.xml"/>
     <subtitle>少年易老事难成, 一寸光阴不可轻</subtitle>
     <logo>https://zhaifg.github.io/images/avatar.png</logo>
     <icon>https://zhaifg.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2019, Gridea</rights>
+    <rights>All rights reserved 2019, 我的笔记本</rights>
     <entry>
         <title type="html"><![CDATA[NeDB Javascript 数据库]]></title>
         <id>https://zhaifg.github.io/post/nedb-javascript-shu-ju-ku</id>
         <link href="https://zhaifg.github.io/post/nedb-javascript-shu-ju-ku">
         </link>
         <updated>2019-10-29T15:13:50.000Z</updated>
-        <content type="html"><![CDATA[<p>NeDB 适用于Node.js, nw.js, Electron和浏览器的嵌入式持久的数据库或者内存存储.<br>
-100%的Javascript实现</p>
-<h2 id="安装">安装</h2>
-<p>https://github.com/louischatriot/nedb</p>
-<pre><code>npm install nedb --save
-npm test
-bower install db
-</code></pre>
-<h2 id="使用">使用</h2>
-<p>NeDB 可以为内存数据库模式, 也可以持久存储. 一个数据存储相当于一个MongoDB集合。</p>
-<p>new Datastore(options):</p>
-<ul>
-<li>filename: optional</li>
-<li>inMemoryOnly:  可选, 默认为false</li>
-<li>timestampData: 可选, default flase</li>
-<li>autoload: optional default false</li>
-<li>onload: optional</li>
-<li>afterSerialization:</li>
-<li>beforeDeserialization:</li>
-<li>corruptAlertThreshold:</li>
-<li>compareStrings:</li>
-</ul>
-<pre><code class="language-js">var Datastore = require('nedb)
-  , db = new Datastore()
-  // Type 2: Persistent datastore with manual loading
-var Datastore = require('nedb')
-  , db = new Datastore({ filename: 'path/to/datafile' });
-db.loadDatabase(function (err) {    // Callback is optional
-  // Now commands will be executed
-});
-
-
-// Type 3: Persistent datastore with automatic loading
-var Datastore = require('nedb')
-  , db = new Datastore({ filename: 'path/to/datafile', autoload: true });
-// You can issue commands right away
-
-
-// Type 4: Persistent datastore for a Node Webkit app called 'nwtest'
-// For example on Linux, the datafile will be ~/.config/nwtest/nedb-data/something.db
-var Datastore = require('nedb')
-  , path = require('path')
-  , db = new Datastore({ filename: path.join(require('nw.gui').App.dataPath, 'something.db') });
-
-
-// Of course you can create multiple datastores if you need several
-// collections. In this case it's usually a good idea to use autoload for all collections.
-db = {};
-db.users = new Datastore('path/to/users.db');
-db.robots = new Datastore('path/to/robots.db');
-
-// You need to load each database (here we do it asynchronously)
-db.users.loadDatabase();
-db.robots.loadDatabase();
-</code></pre>
-]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
@@ -84,25 +28,6 @@ db.robots.loadDatabase();
 ]]></summary>
         <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
 ✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
 ]]></content>
     </entry>
 </feed>
