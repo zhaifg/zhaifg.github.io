@@ -1,0 +1,224 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NeDB Javascript 数据库 | Gridea</title>
+<meta name="description" content="少年易老事难成, 一寸光阴不可轻" />
+<link rel="shortcut icon" href="https://zhaifg.github.io/favicon.ico?v=1572362990022">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://zhaifg.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zhaifg.github.io">
+  <img class="avatar" src="https://zhaifg.github.io/images/avatar.png?v=1572362990022" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    少年易老事难成, 一寸光阴不可轻
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              NeDB Javascript 数据库
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-10-29
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>NeDB 适用于Node.js, nw.js, Electron和浏览器的嵌入式持久的数据库或者内存存储.<br>
+100%的Javascript实现</p>
+<h2 id="安装">安装</h2>
+<p>https://github.com/louischatriot/nedb</p>
+<pre><code>npm install nedb --save
+npm test
+bower install db
+</code></pre>
+<h2 id="使用">使用</h2>
+<p>NeDB 可以为内存数据库模式, 也可以持久存储. 一个数据存储相当于一个MongoDB集合。</p>
+<p>new Datastore(options):</p>
+<ul>
+<li>filename: optional</li>
+<li>inMemoryOnly:  可选, 默认为false</li>
+<li>timestampData: 可选, default flase</li>
+<li>autoload: optional default false</li>
+<li>onload: optional</li>
+<li>afterSerialization:</li>
+<li>beforeDeserialization:</li>
+<li>corruptAlertThreshold:</li>
+<li>compareStrings:</li>
+</ul>
+<pre><code class="language-js">var Datastore = require('nedb)
+  , db = new Datastore()
+  // Type 2: Persistent datastore with manual loading
+var Datastore = require('nedb')
+  , db = new Datastore({ filename: 'path/to/datafile' });
+db.loadDatabase(function (err) {    // Callback is optional
+  // Now commands will be executed
+});
+
+
+// Type 3: Persistent datastore with automatic loading
+var Datastore = require('nedb')
+  , db = new Datastore({ filename: 'path/to/datafile', autoload: true });
+// You can issue commands right away
+
+
+// Type 4: Persistent datastore for a Node Webkit app called 'nwtest'
+// For example on Linux, the datafile will be ~/.config/nwtest/nedb-data/something.db
+var Datastore = require('nedb')
+  , path = require('path')
+  , db = new Datastore({ filename: path.join(require('nw.gui').App.dataPath, 'something.db') });
+
+
+// Of course you can create multiple datastores if you need several
+// collections. In this case it's usually a good idea to use autoload for all collections.
+db = {};
+db.users = new Datastore('path/to/users.db');
+db.robots = new Datastore('path/to/robots.db');
+
+// You need to load each database (here we do it asynchronously)
+db.users.loadDatabase();
+db.robots.loadDatabase();
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85">安装</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8">使用</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zhaifg.github.io/post/hello-gridea">
+              <h3 class="post-title">
+                Hello Gridea
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://zhaifg.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
