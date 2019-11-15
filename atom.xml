@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhaifg.github.io</id>
     <title>我的笔记本</title>
-    <updated>2019-10-29T15:46:27.752Z</updated>
+    <updated>2019-11-15T15:02:57.432Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhaifg.github.io"/>
     <link rel="self" href="https://zhaifg.github.io/atom.xml"/>
@@ -10,6 +10,20 @@
     <logo>https://zhaifg.github.io/images/avatar.png</logo>
     <icon>https://zhaifg.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, 我的笔记本</rights>
+    <entry>
+        <title type="html"><![CDATA[如何分析,统计算法的执行效率和资源消耗?]]></title>
+        <id>https://zhaifg.github.io/post/ru-he-fen-xi-tong-ji-suan-fa-de-zhi-xing-xiao-lu-he-zi-yuan-xiao-hao</id>
+        <link href="https://zhaifg.github.io/post/ru-he-fen-xi-tong-ji-suan-fa-de-zhi-xing-xiao-lu-he-zi-yuan-xiao-hao">
+        </link>
+        <updated>2019-11-12T15:00:59.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[electron-store: Electron的持久化存储]]></title>
+        <id>https://zhaifg.github.io/post/electron-store-electron-de-chi-jiu-hua-cun-chu</id>
+        <link href="https://zhaifg.github.io/post/electron-store-electron-de-chi-jiu-hua-cun-chu">
+        </link>
+        <updated>2019-10-30T14:26:10.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[NeDB Javascript 数据库]]></title>
         <id>https://zhaifg.github.io/post/nedb-javascript-shu-ju-ku</id>

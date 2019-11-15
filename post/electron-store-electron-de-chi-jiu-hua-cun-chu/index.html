@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>关于 | 我的笔记本</title>
+<title>electron-store: Electron的持久化存储 | 我的笔记本</title>
 <meta name="description" content="少年易老事难成, 一寸光阴不可轻">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -100,20 +100,39 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">关于</h2>
-            <div class="post-date">2019-01-25</div>
+            <h2 class="post-title">electron-store: Electron的持久化存储</h2>
+            <div class="post-date">2019-10-30</div>
             
             <div class="post-content">
-              <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<h2 id="联系我呀">📬 联系我呀</h2>
+              <h2 id="安装">安装</h2>
+<pre><code>npm install electron-store
+</code></pre>
+<h2 id="usage">Usage</h2>
+<pre><code class="language-js">const Store = require('electron-store')
+const store = new Store()
+
+store.set('unicorn', '🦄');
+console.log(store.get('unicorn'));
+
+store.set('foo.bar', true)
+console.log(store.get('foo'))
+
+store.delete('unicorn');
+console.log(store.get('unicorn'));
+
+</code></pre>
 
             </div>
             
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://zhaifg.github.io/post/nedb-javascript-shu-ju-ku">
+                  <h3 class="post-title">
+                    NeDB Javascript 数据库
+                  </h3>
+                </a>
+              </div>
             
 
             
