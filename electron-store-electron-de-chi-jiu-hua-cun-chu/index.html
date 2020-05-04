@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>文章归档 | 我的笔记本</title>
+<title>electron-store: Electron的持久化存储 | 我的笔记本</title>
 <meta name="description" content="少年易老事难成, 一寸光阴不可轻">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -99,71 +99,45 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          
+          <div class="post-detail">
+            <h2 class="post-title">electron-store: Electron的持久化存储</h2>
+            <div class="post-date">2019-10-30</div>
+            
+            <div class="post-content">
+              <h2 id="安装">安装</h2>
+<pre><code>npm install electron-store
+</code></pre>
+<h2 id="usage">Usage</h2>
+<pre><code class="language-js">const Store = require('electron-store')
+const store = new Store()
 
-          <h2 class="archives-title">文章归档</h2>
-          <div class="archives-container">
+store.set('unicorn', '🦄');
+console.log(store.get('unicorn'));
+
+store.set('foo.bar', true)
+console.log(store.get('foo'))
+
+store.delete('unicorn');
+console.log(store.get('unicorn'));
+
+</code></pre>
+
+            </div>
             
-              <h2 class="year" data-aos="fade-in" data-aos-delay="500">2019</h2>
-              
-                
-                  <article class="post">
-                    <a href="https://zhaifg.github.io/ru-he-fen-xi-tong-ji-suan-fa-de-zhi-xing-xiao-lu-he-zi-yuan-xiao-hao/">
-                      <h2 class="post-title">
-                        如何分析,统计算法的执行效率和资源消耗?
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="https://zhaifg.github.io/electron-store-electron-de-chi-jiu-hua-cun-chu/">
-                      <h2 class="post-title">
-                        electron-store: Electron的持久化存储
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="https://zhaifg.github.io/nedb-javascript-shu-ju-ku/">
-                      <h2 class="post-title">
-                        NeDB Javascript 数据库
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-              
             
-              <h2 class="year" data-aos="fade-in" data-aos-delay="500">2018</h2>
-              
-                
-              
-                
-              
-                
-              
-                
-                  <article class="post">
-                    <a href="https://zhaifg.github.io/hello-gridea/">
-                      <h2 class="post-title">
-                        Hello Gridea
-                      </h2>
-                    </a>
-                  </article>
-                
-              
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://zhaifg.github.io/nedb-javascript-shu-ju-ku/">
+                  <h3 class="post-title">
+                    NeDB Javascript 数据库
+                  </h3>
+                </a>
+              </div>
             
+
+            
+
           </div>
-
-          <div class="pagination-container">
-  
-  
-</div>
 
         </div>
       </div>
