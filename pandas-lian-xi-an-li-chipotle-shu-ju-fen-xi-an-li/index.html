@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>NeDB Javascript 数据库 | 我的笔记本</title>
+<title>pandas练习案例：Chipotle数据分析案例 | 我的笔记本</title>
 <meta name="description" content="少年易老事难成, 一寸光阴不可轻">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -100,74 +100,90 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">NeDB Javascript 数据库</h2>
-            <div class="post-date">2019-10-29</div>
+            <h2 class="post-title">pandas练习案例：Chipotle数据分析案例</h2>
+            <div class="post-date">2020-05-05</div>
             
             <div class="post-content">
-              <p>NeDB 适用于Node.js, nw.js, Electron和浏览器的嵌入式持久的数据库或者内存存储.<br>
-100%的Javascript实现</p>
-<h2 id="安装">安装</h2>
-<p>https://github.com/louischatriot/nedb</p>
-<pre><code>npm install nedb --save
-npm test
-bower install db
+              <h2 id="1-读取数据和查看数据信息">1.  读取数据和查看数据信息</h2>
+<pre><code class="language-python">import pandas as pd
+
+## 读取数据
+chipo = pd.read_csv(&quot;chipotle.csv&quot;, sep=&quot;\t&quot;)
+
+## 查看最后几行内容
+chipo.tail()
+
+## 观察数据集信息：数量多少， 行列， 索引
+chipo.info()
+#&lt;class 'pandas.core.frame.DataFrame'&gt;
+#RangeIndex: 4622 entries, 0 to 4621
+#Data columns (total 5 columns):
+# #   Column              Non-Null Count  Dtype 
+#---  ------              --------------  ----- 
+# 0   order_id            4622 non-null   int64 
+# 1   quantity            4622 non-null   int64 
+# 2   item_name           4622 non-null   object
+# 3   choice_description  3376 non-null   object
+# 4   item_price          4622 non-null   object
+#dtypes: int64(2), object(3)
+#memory usage: 180.7+ KB
+
+chipo.shape # (4622, 5)
+chipo.columns # Index(['order_id', 'quantity', 'item_name', 'choice_description',
+     #  'item_price'],
+     # dtype='object')
+chipo.index # RangeIndex(start=0, stop=4622, step=1)
+
 </code></pre>
-<h2 id="使用">使用</h2>
-<p>NeDB 可以为内存数据库模式, 也可以持久存储. 一个数据存储相当于一个MongoDB集合。</p>
-<p>new Datastore(options):</p>
-<ul>
-<li>filename: optional</li>
-<li>inMemoryOnly:  可选, 默认为false</li>
-<li>timestampData: 可选, default flase</li>
-<li>autoload: optional default false</li>
-<li>onload: optional</li>
-<li>afterSerialization:</li>
-<li>beforeDeserialization:</li>
-<li>corruptAlertThreshold:</li>
-<li>compareStrings:</li>
-</ul>
-<pre><code class="language-js">var Datastore = require('nedb)
-  , db = new Datastore()
-  // Type 2: Persistent datastore with manual loading
-var Datastore = require('nedb')
-  , db = new Datastore({ filename: 'path/to/datafile' });
-db.loadDatabase(function (err) {    // Callback is optional
-  // Now commands will be executed
-});
+<h2 id="2-被下单数最多的商品item是什么以item_name分组-并对quantity-求和">2.  被下单数最多的商品（item)是什么？以item_name分组 并对quantity 求和</h2>
+<pre><code class="language-py">c = chipo[['item_name', 'quantity']].groupby(['item_name'], as_index=False).agg({'quantity':sum})
 
-
-// Type 3: Persistent datastore with automatic loading
-var Datastore = require('nedb')
-  , db = new Datastore({ filename: 'path/to/datafile', autoload: true });
-// You can issue commands right away
-
-
-// Type 4: Persistent datastore for a Node Webkit app called 'nwtest'
-// For example on Linux, the datafile will be ~/.config/nwtest/nedb-data/something.db
-var Datastore = require('nedb')
-  , path = require('path')
-  , db = new Datastore({ filename: path.join(require('nw.gui').App.dataPath, 'something.db') });
-
-
-// Of course you can create multiple datastores if you need several
-// collections. In this case it's usually a good idea to use autoload for all collections.
-db = {};
-db.users = new Datastore('path/to/users.db');
-db.robots = new Datastore('path/to/robots.db');
-
-// You need to load each database (here we do it asynchronously)
-db.users.loadDatabase();
-db.robots.loadDatabase();
+c.sort_values(['quantity'], ascending=False, inplace=True)
+c.head()
 </code></pre>
+<pre><code> item_name	quantity
+</code></pre>
+<p>17	Chicken Bowl	761<br>
+18	Chicken Burrito	591<br>
+25	Chips and Guacamole	506<br>
+39	Steak Burrito	386<br>
+10	Canned Soft Drink	351</p>
+<p>##3.  在item_name 这一列中， 一共有多少种商品被下单<br>
+<code>chipo['item_name'].nunique()</code><br>
+50<br>
+##4. 在choice_description中，下单次数最多的商品是什么?  一共有多少商品被下单</p>
+<pre><code class="language-py">chipo['choice_description'].value_counts().head()
+total_items_orders = chipo['quantity'].sum()
+total_items_orders
+</code></pre>
+<p>out :  4972</p>
+<p>##5. 将item_price转换为浮点数</p>
+<pre><code class="language-py">dollarizer = lambda x: float(x[1:-1])
+chipo['item_price'] = chipo['item_price'].apply(dollarizer)
+</code></pre>
+<p>##6. 在该数据集对应的时期内， 收入（revenue） 是多少</p>
+<pre><code class="language-py">chipo['sub_total'] = round(chipo['item_price'] * chipo['quantity'], 2)
+chipo['sub_total'].sum()
+</code></pre>
+<p>39237.02<br>
+##7. 在该数据集对应的时期内， 一共有多少订单？<br>
+<code>chipo['order_id'].nunique()</code></p>
+<p>##8. 每一单（order）对应的平均总价是多少？</p>
+<pre><code class="language-py">chipo[['order_id', 'sub_total']].groupby(by=['order_id']).agg({'sub_total':'sum'})['sub_total'].mean()
+</code></pre>
+<p>21.394231188658654</p>
+<p>##9. 一共多少种不同的商品被售出<br>
+<code>chipo['item_name'].nunique()</code><br>
+50</p>
 
             </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://zhaifg.github.io/hello-gridea/">
+                <a href="https://zhaifg.github.io/ru-he-fen-xi-tong-ji-suan-fa-de-zhi-xing-xiao-lu-he-zi-yuan-xiao-hao/">
                   <h3 class="post-title">
-                    Hello Gridea
+                    如何分析,统计算法的执行效率和资源消耗?
                   </h3>
                 </a>
               </div>
