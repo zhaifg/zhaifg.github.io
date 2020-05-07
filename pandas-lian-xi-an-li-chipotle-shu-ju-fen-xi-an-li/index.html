@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://zhaifg.github.io/favicon.ico?v=1588778715555">
+<link rel="shortcut icon" href="https://zhaifg.github.io/favicon.ico?v=1588859851080">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://zhaifg.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://zhaifg.github.io">
-        <img src="https://zhaifg.github.io/images/avatar.png?v=1588778715555" class="site-logo">
+        <img src="https://zhaifg.github.io/images/avatar.png?v=1588859851080" class="site-logo">
         <h1 class="site-title">我的笔记本</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -148,32 +148,32 @@ c.head()
 25	Chips and Guacamole	506<br>
 39	Steak Burrito	386<br>
 10	Canned Soft Drink	351</p>
-<p>##3.  在item_name 这一列中， 一共有多少种商品被下单<br>
-<code>chipo['item_name'].nunique()</code><br>
-50<br>
-##4. 在choice_description中，下单次数最多的商品是什么?  一共有多少商品被下单</p>
+<h2 id="3-在item_name-这一列中-一共有多少种商品被下单">3.  在item_name 这一列中， 一共有多少种商品被下单</h2>
+<p><code>chipo['item_name'].nunique()</code><br>
+50</p>
+<h2 id="4-在choice_description中下单次数最多的商品是什么-一共有多少商品被下单">4. 在choice_description中，下单次数最多的商品是什么?  一共有多少商品被下单</h2>
 <pre><code class="language-py">chipo['choice_description'].value_counts().head()
 total_items_orders = chipo['quantity'].sum()
 total_items_orders
 </code></pre>
 <p>out :  4972</p>
-<p>##5. 将item_price转换为浮点数</p>
+<h2 id="5-将item_price转换为浮点数">5. 将item_price转换为浮点数</h2>
 <pre><code class="language-py">dollarizer = lambda x: float(x[1:-1])
 chipo['item_price'] = chipo['item_price'].apply(dollarizer)
 </code></pre>
-<p>##6. 在该数据集对应的时期内， 收入（revenue） 是多少</p>
+<h2 id="6-在该数据集对应的时期内-收入revenue-是多少">6. 在该数据集对应的时期内， 收入（revenue） 是多少</h2>
 <pre><code class="language-py">chipo['sub_total'] = round(chipo['item_price'] * chipo['quantity'], 2)
 chipo['sub_total'].sum()
 </code></pre>
-<p>39237.02<br>
-##7. 在该数据集对应的时期内， 一共有多少订单？<br>
-<code>chipo['order_id'].nunique()</code></p>
-<p>##8. 每一单（order）对应的平均总价是多少？</p>
+<p>39237.02</p>
+<h2 id="7-在该数据集对应的时期内-一共有多少订单">7. 在该数据集对应的时期内， 一共有多少订单？</h2>
+<p><code>chipo['order_id'].nunique()</code></p>
+<h2 id="8-每一单order对应的平均总价是多少">8. 每一单（order）对应的平均总价是多少？</h2>
 <pre><code class="language-py">chipo[['order_id', 'sub_total']].groupby(by=['order_id']).agg({'sub_total':'sum'})['sub_total'].mean()
 </code></pre>
 <p>21.394231188658654</p>
-<p>##9. 一共多少种不同的商品被售出<br>
-<code>chipo['item_name'].nunique()</code><br>
+<h2 id="9-一共多少种不同的商品被售出">9. 一共多少种不同的商品被售出</h2>
+<p><code>chipo['item_name'].nunique()</code><br>
 50</p>
 
             </div>
