@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhaifg.github.io</id>
     <title>我的笔记本</title>
-    <updated>2020-05-07T14:00:07.525Z</updated>
+    <updated>2020-05-07T14:22:16.303Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhaifg.github.io"/>
     <link rel="self" href="https://zhaifg.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://zhaifg.github.io/images/avatar.png</logo>
     <icon>https://zhaifg.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 我的笔记本</rights>
+    <entry>
+        <title type="html"><![CDATA[pandas 案例分析 12年欧洲杯数据： 数据的过滤与排序]]></title>
+        <id>https://zhaifg.github.io/pandas-an-li-fen-xi-12-nian-ou-zhou-bei-shu-ju-shu-ju-de-guo-lu-yu-pai-xu/</id>
+        <link href="https://zhaifg.github.io/pandas-an-li-fen-xi-12-nian-ou-zhou-bei-shu-ju-shu-ju-de-guo-lu-yu-pai-xu/">
+        </link>
+        <updated>2020-05-07T14:17:41.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[pandas练习案例：Chipotle数据分析案例]]></title>
         <id>https://zhaifg.github.io/pandas-lian-xi-an-li-chipotle-shu-ju-fen-xi-an-li/</id>

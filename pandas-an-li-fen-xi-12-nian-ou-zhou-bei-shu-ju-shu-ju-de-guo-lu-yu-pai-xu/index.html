@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Hello Gridea | 我的笔记本</title>
+<title>pandas 案例分析 12年欧洲杯数据： 数据的过滤与排序 | 我的笔记本</title>
 <meta name="description" content="少年易老事难成, 一寸光阴不可轻">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -100,45 +100,49 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">Hello Gridea</h2>
-            <div class="post-date">2018-12-12</div>
-            
-              <div class="feature-container" style="background-image: url('https://zhaifg.github.io/post-images/hello-gridea.png')">
-              </div>
+            <h2 class="post-title">pandas 案例分析 12年欧洲杯数据： 数据的过滤与排序</h2>
+            <div class="post-date">2020-05-07</div>
             
             <div class="post-content">
-              <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+              <pre><code class="language-python">import pandas as pd
+
+euro = pd.read_csv(&quot;data/euro12.csv&quot;)
+euro.head(10)
+euro.shape[0]
+euro.columns
+</code></pre>
+<h2 id="2-查看每个球队的红牌黄牌个数">2. 查看每个球队的红牌，黄牌个数</h2>
+<p><code>euro[['Team', 'Red Cards', 'Yellow Cards']]</code></p>
+<h2 id="3-先按照红牌排序-在按照黄牌排序">3. 先按照红牌排序， 在按照黄牌排序</h2>
+<pre><code class="language-py">euro[['Team', 'Red Cards', 'Yellow Cards']].sort_values(['Red Cards', 'Yellow Cards'], ascending=False)
+</code></pre>
+<h2 id="4-计算球队黄牌的平均值">4. 计算球队黄牌的平均值</h2>
+<p><code>round(euro['Yellow Cards'].mean())</code></p>
+<h2 id="5-找到进球数大于6的球队">5. 找到进球数大于6的球队</h2>
+<p><code>euro[euro.Goals&gt;6]</code></p>
+<h2 id="6-查找字母g开头的球队">6. 查找字母G开头的球队</h2>
+<p><code>euro[euro.Team.str.startswith('G')]</code></p>
+<h2 id="7-查看前7列-iloc方法">7. 查看前7列 iloc方法</h2>
+<p><code>euro.iloc[:,:7]</code></p>
+<h2 id="8-查看除了最后三列的所有列">8. 查看除了最后三列的所有列</h2>
+<p><code>euro.iloc[:,:-3]</code></p>
+<h2 id="9-查看英格兰england-意大利italy和俄罗斯russia的射正率shooting-accuracy">9. 查看英格兰(England)、意大利(Italy)和俄罗斯(Russia)的射正率(Shooting Accuracy)</h2>
+<h3 id="方式一">方式一</h3>
+<p><code>euro[euro.Team.isin(['England', 'Italy', 'Russia'])][['Team','Shooting Accuracy']]</code></p>
+<h3 id="方法二">方法二</h3>
+<p><code>euro.loc[euro.Team.isin(['England','Italy','Russia']),['Team','Shooting Accuracy']]</code></p>
 
             </div>
             
-              <div class="tag-container">
-                
-                  <a href="https://zhaifg.github.io/tag/40BzdEY6C/" class="tag">
-                    Gridea
-                  </a>
-                
-              </div>
             
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://zhaifg.github.io/pandas-lian-xi-an-li-chipotle-shu-ju-fen-xi-an-li/">
+                  <h3 class="post-title">
+                    pandas练习案例：Chipotle数据分析案例
+                  </h3>
+                </a>
+              </div>
             
 
             
